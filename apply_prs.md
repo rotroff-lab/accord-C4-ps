@@ -163,9 +163,6 @@ table(preds.sct_prs[,3])
     ##    0    1 
     ## 4220 3834
 
-CT-PRS Model
-============
-
 CT-PRS
 ------
 

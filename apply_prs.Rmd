@@ -106,8 +106,6 @@ colnames(preds.sct_prs)<-c("ID","sctPRS","prediction")
 table(preds.sct_prs[,3])
 ```
 
-# CT-PRS Model
-
 ## CT-PRS
 
 1. SNP data is subset down to contain only SNPs involved in CT-PRS.
