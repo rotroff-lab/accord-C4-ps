@@ -70,11 +70,11 @@ big_counts(G.imp,ind.col = 1:10)
 Load Models
 ===========
 
-SCT-PRS
+SCT-PS
 -------
 
 ``` r
-# load sct-prs betas
+# load sct-ps betas
 all_snps<-fread("Mariam_et_al_ACCORD_C4_SCT-PS.csv",data.table = F,
                 skip=1)
 sumstats<-all_snps[,c('chr', 'rsid', 'pos', 'a0', 'a1', 'beta', 'p')]
@@ -93,7 +93,7 @@ info_snp <- snp_match(sumstats, map)
 ``` r
 x<-obj.bigSNPall$map$marker.ID[which(obj.bigSNPall$map$marker.ID %in% info_snp$rsid)]
 info_sct_prs<-info_snp[order(match(info_snp$rsid,x)),]
-# load sct-prs model
+# load sct-ps model
 final_model<-read_rds("Mariam_et_al_ACCORD_C4_SCT-PS.rds")
 summary(final_model$mod)
 ```
@@ -106,11 +106,11 @@ summary(final_model$mod)
     ## 3 1                   0           1           0.309     -136. <dbl…   2241
     ## # … with 2 more variables: message <list>, all_conv <lgl>
 
-CT-PRS Model
+CT-PS Model
 ------------
 
 ``` r
-# load ct-prs betas
+# load ct-ps betas
 all_snps<-fread("Mariam_et_al_ACCORD_C4_CT-PS.csv",data.table = F,
                 skip = 1)
 sumstats<-all_snps[,c('chr', 'rsid', 'pos', 'a0', 'a1', 'beta', 'p')]
@@ -131,14 +131,14 @@ x<-obj.bigSNPall$map$marker.ID[which(obj.bigSNPall$map$marker.ID %in% info_snp$r
 info_ct_prs<-info_snp[order(match(info_snp$rsid,x)),]
 ```
 
-Apply PRS
+Apply PS
 =========
 
-SCT-PRS
+SCT-PS
 -------
 
-1.  SNP data is subset down to contain only SNPs involved in SCT-PRS.
-2.  SCT-PRS scores are calculated.
+1.  SNP data is subset down to contain only SNPs involved in SCT-PS.
+2.  SCT-PS scores are calculated.
 3.  A pre-specified threshold is used to call individuals predicted to
     benefit from intensive treatment.
 
@@ -163,11 +163,11 @@ table(preds.sct_prs[,3])
     ##    0    1 
     ## 4220 3834
 
-CT-PRS
+CT-PS
 ------
 
-1.  SNP data is subset down to contain only SNPs involved in CT-PRS.
-2.  CT-PRS scores are calculated.
+1.  SNP data is subset down to contain only SNPs involved in CT-PS.
+2.  CT-PS scores are calculated.
 3.  A pre-specified threshold is used to call individuals predicted to
     benefit from intensive treatment.
 
@@ -196,8 +196,8 @@ Save Output
 ===========
 
 ``` r
-write.csv(preds.sct_prs,"sct_prs_preds.csv",row.names = F)
-write.csv(preds.ct_prs,"ct_prs_preds.csv",row.names = F)
+write.csv(preds.sct_prs,"sct_ps_preds.csv",row.names = F)
+write.csv(preds.ct_prs,"ct_ps_preds.csv",row.names = F)
 ```
 
 SessionInfo
